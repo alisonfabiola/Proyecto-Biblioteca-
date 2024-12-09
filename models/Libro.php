@@ -1,17 +1,15 @@
 <?php
-
 class Libro {
-    private $id;
     private $titulo;
     private $autor;
     private $categoria;
-    private $estado; // Disponible o prestado
+    private $prestado;
 
-    public function __construct($titulo, $autor, $categoria, $estado = 'disponible') {
+    public function __construct($titulo, $autor, $categoria) {
         $this->titulo = $titulo;
         $this->autor = $autor;
         $this->categoria = $categoria;
-        $this->estado = $estado;
+        $this->prestado = false; // Por defecto no está prestado
     }
 
     public function getTitulo() {
@@ -26,11 +24,15 @@ class Libro {
         return $this->categoria;
     }
 
-    public function getEstado() {
-        return $this->estado;
+    public function isPrestado() {
+        return $this->prestado;
     }
 
-    public function setEstado($estado) {
-        $this->estado = $estado;
+    public function prestar() {
+        $this->prestado = true;
+    }
+
+    public function devolver() {
+        $this->prestado = false;
     }
 }
